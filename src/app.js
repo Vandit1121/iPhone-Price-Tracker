@@ -38,8 +38,8 @@ async function checkPrice(page) {
     // $(html);
     $("._30jeq3._16Jk6d", html).each(function () {
         price = $(this).text();
-        console.log(price);
-        // sendNotifications();
+        // console.log(price);
+        sendNotifications();
     })
 }
 
