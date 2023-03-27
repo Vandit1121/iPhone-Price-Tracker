@@ -6,6 +6,16 @@ const cheerio = require('cheerio');
 const mongoose = require("mongoose");
 const url = "https://www.flipkart.com/apple-iphone-14-blue-128-gb/p/itmdb77f40da6b6d";
 const CronJob = require('cron').CronJob;
+const express = require("express");
+
+
+const app = express();
+
+app.set('view engine', 'ejs');
+
+
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.static("public"));
 
 const connectDb = async () => {
     try {
@@ -185,4 +195,14 @@ bot.onText(/\/remove(.+)/, (msg, match) => {
         removeUser(username[1] + " " + username[2], username[3]);
         // bot.sendMessage(chat_id, "Successfully Unsubscribed.");
     }
+});
+
+
+app.get("/", function (req, res) {
+    res.send("Sucess");
+});
+
+
+app.listen(process.env.PORT || 3000, function () {
+    console.log("Server is running on port "+process.env.PORT+".");
 });
