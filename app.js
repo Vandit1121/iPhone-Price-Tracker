@@ -107,12 +107,12 @@ async function checkAdmin(name, password) {
         return true;
     }
 }
-keepAlive();
 connectDb();
+keepAlive();
 
 
 
-const bot = new telegramBot(token, { polling: true });
+const bot = new telegramBot(process.env.token, { polling: true });
 let admin = 0;
 bot.onText(/\/start/, (message) => {
     let chat_id = message.chat.id;
